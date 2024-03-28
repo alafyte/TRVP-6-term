@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A</title>
+</head>
+<body>
+<h1>Введите значения x и y:</h1>
+<form id="calcForm">
+    <input type="text" id="valueX" name="valueX" placeholder="Введите значение x">
+    <br/>
+    <input type="text" id="valueY" name="valueY" placeholder="Введите значение y">
+    <br/>
+    <button type="submit">Вычислить</button>
+</form>
+<h2>Результат:</h2>
+<div id="result"></div>
+
+<script>
+    const form = document.getElementById('calcForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const x = document.getElementById('valueX').value;
+        const y = document.getElementById('valueY').value;
+
+        const response = await fetch('/calculate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Value-x': x,
+                'X-Value-y': y
+            }
+        });
+
+        const z = response.headers.get('X-Value-z');
+        resultDiv.textContent = 'Результат: ' + z;
+    });
+</script>
+</body>
+</html>
