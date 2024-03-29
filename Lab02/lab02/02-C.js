@@ -21,7 +21,7 @@ app.post('/calculate', (req, res) => {
 
     res.setHeader('X-Value-z', z.toString());
     setTimeout(() => {
-        res.send('Результат: ' + z);
+        res.end();
     }, 10000);
 });
 

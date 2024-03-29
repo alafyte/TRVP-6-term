@@ -20,7 +20,7 @@ app.post('/calculate', (req, res) => {
     const z = x + y;
 
     res.setHeader('X-Value-z', z.toString());
-    res.send('Результат: ' + z);
+    res.end();
 });
 
 app.listen(port, () => {

@@ -40,7 +40,7 @@
 
     xhrA.onload = function() {
       if (xhrA.status === 200) {
-        resultA.textContent = xhrA.responseText;
+        resultA.textContent = "Результат: " + xhrA.getResponseHeader('X-value-z');
       }
     };
 
